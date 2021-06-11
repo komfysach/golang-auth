@@ -4,14 +4,19 @@ import (
 	"festi.io/database"
 	"festi.io/routes"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
 	database.Connect()
 
-    app := fiber.New()
+	app := fiber.New()
 
-    routes.Setup(app)
+	app.Use(cors.New(cors.Config{
+		AllowCredentials: true,
+	}))
 
-    app.Listen(":3000")
+	routes.Setup(app)
+
+	app.Listen(":3000")
 }
