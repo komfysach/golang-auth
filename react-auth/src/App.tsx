@@ -37,7 +37,7 @@ function App() {
         <Route path="/login" component={() => <Login setLogin={() => setLogin(true)} />} />
         <Route path="/register" component={Register} />
         <Route path="/forgot" component={Forgot} />
-        <Route path="/reset:token" component={Reset} />
+        <Route path="/reset/:token" component={Reset} />
       </BrowserRouter>
     </div>
 
